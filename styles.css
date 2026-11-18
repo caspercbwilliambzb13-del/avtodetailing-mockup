@@ -245,6 +245,22 @@ input[type="range"] { padding: 0; accent-color: var(--accent); }
 .compare-after .demo-illustration .glass { fill: #29332c; }
 .compare-after .demo-illustration .shine { opacity: .94; }
 .compare-after .demo-illustration .wheel { stroke: #e7f05a; }
+/* Фотохром: картинки по умолчанию чёрно-белые, цвет — только при нажатии/тапе */
+.compare-frame svg,
+.photo-preview img,
+img {
+  filter: grayscale(1);
+  transition: filter .3s ease;
+}
+.compare-frame:active svg,
+.compare-frame.color svg,
+.photo-preview:active img,
+.photo-preview.color img,
+img:active,
+img.color {
+  filter: none;
+}
+
 
 .requests-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-bottom: 16px; }
 .requests-toolbar .field { flex: 1 1 240px; }

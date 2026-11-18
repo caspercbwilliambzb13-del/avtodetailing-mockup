@@ -333,6 +333,21 @@
   });
   moveDialog.addEventListener('click', (event) => { if (event.target === moveDialog) moveDialog.close(); });
 
+  // Фотохром: тап по картинке переключает цвет (по умолчанию — ч/б).
+  // Перетаскивание ползунка сравнения не переключает: считаем только короткий тап без сдвига.
+  let photochromeTap = null;
+  document.addEventListener('pointerdown', (event) => {
+    const target = event.target.closest('.compare-frame, .photo-preview, img');
+    if (target) photochromeTap = { x: event.clientX, y: event.clientY, target };
+  });
+  document.addEventListener('pointerup', (event) => {
+    if (!photochromeTap) return;
+    const moved = Math.hypot(event.clientX - photochromeTap.x, event.clientY - photochromeTap.y);
+    const target = photochromeTap.target;
+    photochromeTap = null;
+    if (moved <= 10) target.classList.toggle('color');
+  });
+
   const savedTheme = read(KEYS.theme, 'dark'); document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
   if (settings.company.accent) document.documentElement.style.setProperty('--accent', settings.company.accent);
   render();
