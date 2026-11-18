@@ -1,0 +1,19 @@
+{
+  "name": "АвтоБлеск — Автодетейлинг",
+  "short_name": "АвтоБлеск",
+  "description": "Учебный макет записи в студию автодетейлинга.",
+  "lang": "ru",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#151a17",
+  "theme_color": "#151a17",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
